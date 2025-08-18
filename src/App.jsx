@@ -1,7 +1,13 @@
+import { useState } from "react";
+
 import Header from "./components/Header";
 import Guitar from "./components/Guitar";
 
+import db from "./mock/db.json";
+
 function App() {
+  const [guitars, setGuitars] = useState(db);
+
   return (
     <>
       <Header />
