@@ -9,6 +9,23 @@ function App() {
   const [guitars, setGuitars] = useState(db);
   const [cart, setCart] = useState([]);
 
+  function addToCart(item) {
+    const itemExists = cart.findIndex(product => product.id === item.id);
+
+    if(itemExists < 0) {
+      item.quantity = 1;
+
+      setCart([...cart, item]);
+
+      return;
+    }
+    
+    const updatedCart = [...cart];
+    updatedCart[itemExists].quantity++;
+
+    setCart(updatedCart);
+  }
+
   return (
     <>
       <Header />
@@ -24,7 +41,7 @@ function App() {
               <Guitar
                 key={guitar.id}
                 guitar={guitar}
-                setCart={setCart}
+                addToCart={addToCart}
               />
             )
           }
