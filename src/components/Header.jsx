@@ -5,7 +5,9 @@ function Header({
   removeFromCart,
   decreaseQuantity,
   increaseQuantity,
-  clearCart
+  clearCart,
+  isEmptyCart,
+  totalPrice
 }) {
   return (
     <header className="py-5 header">
@@ -27,6 +29,8 @@ function Header({
             decreaseQuantity={decreaseQuantity}
             increaseQuantity={increaseQuantity}
             clearCart={clearCart}
+            isEmptyCart={isEmptyCart}
+            totalPrice={totalPrice}
           />
         </div>
       </div>

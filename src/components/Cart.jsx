@@ -1,18 +1,12 @@
-import { useMemo } from "react";
-
 function Cart({
   cart,
   removeFromCart,
   decreaseQuantity,
   increaseQuantity,
-  clearCart
+  clearCart,
+  isEmptyCart,
+  totalPrice
 }) {
-  const isEmptyCart = useMemo(() => !cart.length, [cart]);
-  const totalPrice = useMemo(() => 
-    cart.reduce((total, item) => total + (item.quantity * item.price), 0), 
-    [cart]
-  );
-
   return (
     <nav className="col-md-6 a mt-5 d-flex align-items-start justify-content-end">
       <div className="carrito">
