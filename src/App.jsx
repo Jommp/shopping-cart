@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Header from "./components/Header";
 import Guitar from "./components/Guitar";
@@ -6,11 +6,21 @@ import Guitar from "./components/Guitar";
 import db from "./mock/db.json";
 
 function App() {
+  const initialCart = () => {
+    const localStorageCart = localStorage.getItem('cart');
+
+    return localStorageCart ? JSON.parse(localStorageCart) : [];
+  }
+
   const [guitars, setGuitars] = useState(db);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(initialCart);
 
   const MAX_GUITARS_QUANTITY = 5;
   const MIN_GUITARS_QUANTITY = 1;
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart])
 
   function addToCart(item) {
     const itemExists = cart.findIndex(product => product.id === item.id);
