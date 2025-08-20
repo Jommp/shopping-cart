@@ -23,6 +23,8 @@ function App() {
       return;
     }
     
+    if(cart[itemExists].quantity >= MAX_GUITARS_QUANTITY) return;
+
     const updatedCart = [...cart];
     updatedCart[itemExists].quantity++;
 
