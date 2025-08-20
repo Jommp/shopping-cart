@@ -1,6 +1,12 @@
 import Cart from "./Cart";
 
-function Header({ cart, removeFromCart, decreaseQuantity, increaseQuantity }) {
+function Header({ 
+  cart,
+  removeFromCart,
+  decreaseQuantity,
+  increaseQuantity,
+  clearCart
+}) {
   return (
     <header className="py-5 header">
       <div className="container-xl">
@@ -20,6 +26,7 @@ function Header({ cart, removeFromCart, decreaseQuantity, increaseQuantity }) {
             removeFromCart={removeFromCart}
             decreaseQuantity={decreaseQuantity}
             increaseQuantity={increaseQuantity}
+            clearCart={clearCart}
           />
         </div>
       </div>
