@@ -26,9 +26,16 @@ function App() {
     setCart(updatedCart);
   }
 
+  function removeFromCart(itemId) {
+    setCart(prevCart => prevCart.filter(item => item.id !== itemId));
+  }
+
   return (
     <>
-      <Header cart={cart} />
+      <Header
+        cart={cart}
+        removeFromCart={removeFromCart}
+      />
 
       <main className="container-xl mt-5">
         <h2 className="text-center">
