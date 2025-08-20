@@ -1,6 +1,11 @@
+import { useMemo } from "react";
+
 function Cart({ cart }) {
-  const isEmptyCart = () => !cart.length;
-  const totalPrice = () => cart.reduce((total, item) => total + (item.quantity * item.price), 0);
+  const isEmptyCart = useMemo(() => !cart.length, [cart]);
+  const totalPrice = useMemo(() => 
+    cart.reduce((total, item) => total + (item.quantity * item.price), 0), 
+    [cart]
+  );
 
   return (
     <nav className="col-md-6 a mt-5 d-flex align-items-start justify-content-end">
@@ -13,7 +18,7 @@ function Cart({ cart }) {
 
         <div id="carrito" className="bg-white p-3">
           {
-            isEmptyCart() ?
+            isEmptyCart ?
               (
                 <p className="text-center">
                   El carrito esta vacio
@@ -83,7 +88,7 @@ function Cart({ cart }) {
                   </table>
 
                   <p className="text-end">
-                    Total pagar: <span className="fw-bold">${totalPrice()}</span>
+                    Total pagar: <span className="fw-bold">${totalPrice}</span>
                   </p>
 
                   <button className="btn btn-dark w-100 mt-3 p-2">
